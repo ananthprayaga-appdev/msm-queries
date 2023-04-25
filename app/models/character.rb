@@ -1,2 +1,2 @@
-class Character
+class Character < ApplicationRecord
 end

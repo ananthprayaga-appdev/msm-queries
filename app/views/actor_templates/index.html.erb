@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <table border="1">
+    <thead>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Dob</th>
+      <th>Show Details</th>
+    </thead>
+    <% @list_of_actors.each do |actor| %>
+    <tr>
+      <td><%=actor.name%></td>
+      <td><img src="<%=actor.image%>" alt=""></td>
+      <td><%=actor.name%></td>
+      <td><%=actor.dob%></td>
+      <td><a href="/actors/<%=actor.id%>">Show details</a></td>
+    </tr>
+    <%end%>
+  </table>
+</body>
+</html>

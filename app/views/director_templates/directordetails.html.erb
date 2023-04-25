@@ -29,5 +29,26 @@
     <dd><%= time_ago_in_words(@director.updated_at) %> ago</dd>
   </dl>
   
+  <table border="1">
+    <thead>
+      <th>ID</th>
+      <th>Image</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Director</th>
+      <th></th>
+    </thead>
+    <% @director_movies.each do |film|%>
+    <tr>
+      <td><%= film.id%></td>
+      <td><img src="<%= film.image%>" alt=""></td>
+      <td><%= film.title%></td>
+      <td><%= film.year%></td>
+      <td><%= @director.name%></td>
+      <td><a href="/movies/<%= film.id%>">Show Details</a></td>
+    </tr>
+    <%end%>
+  </table>
+
 </body>
 </html>

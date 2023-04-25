@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Actor #<%= @actor_id %> details</h1>
+
+  <dl>
+    <dt>Name</dt>
+    <dd><%= @actor.name%></dd>
+
+    <dt>Dob</dt>
+    <dd><%= @actor.dob%></dd>
+
+    <dt>Bio</dt>
+    <dd><%= @actor.bio%></dd>
+
+    <dt>Image</dt>
+    <dd> <img src="<%= @actor.image%>" alt=""></dd>
+
+    <dt>Created at</dt>
+    <dd><%= time_ago_in_words(@actor.created_at) %> ago</dd>
+
+    <dt>Updated at</dt>
+    <dd><%= time_ago_in_words(@actor.updated_at) %> ago</dd>
+  </dl>
+  
+  <table border="1">
+    <thead>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Director</th>
+      <th>Character name</th>
+      <th></th>
+    </thead>
+    <% @actor_characters.each do |character|%>
+    <tr>
+      <td><%= Movie.where({:id => character.movie_id}).at(0).title%></td>
+      <td><%= Movie.where({:id => character.movie_id}).at(0).year%></td>
+      <td><%= Director.where({:id => Movie.where({:id => character.movie_id}).at(0).director_id}).at(0).name %></td>
+      <td><%= character.name%></td>
+      <td><a href="/movies/<%= Movie.where({:id => character.movie_id}).at(0).id%>">Show Details</a></td>
+    </tr>
+    <%end%>
+  </table>
+
+</body>
+</html>
